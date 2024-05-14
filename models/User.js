@@ -20,6 +20,11 @@ const userSchema = new Schema(
       type: String,
       enum: enumHearUs,
     },
+    eventId: {
+      type: Schema.Types.ObjectId,
+      ref: "event",
+      required: true,
+    },
   },
   { versionKey: false }
 );

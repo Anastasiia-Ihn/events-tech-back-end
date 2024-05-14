@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRouter);
+app.use("/api/registration", authRouter);
 app.use("/api/events", eventRouter);
 
 app.use((req, res) => {
