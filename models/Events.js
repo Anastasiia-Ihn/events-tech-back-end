@@ -4,7 +4,7 @@ const eventSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "Title is required"],
     },
     description: {
       type: String,

@@ -2,11 +2,12 @@ import Event from "../models/Events.js";
 import { eventValidation } from "../validations/eventValidation.js";
 
 const addEvent = async (req, res) => {
+  console.log(req.body);
+
   const validateResult = eventValidation.validate(req.body);
   if (validateResult.error) {
     return res.status(400).json("Something went wrong");
   }
-
   await Event.create({ ...req.body });
 
   res.status(201).json("successfully added");
