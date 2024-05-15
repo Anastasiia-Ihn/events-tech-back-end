@@ -2,8 +2,6 @@ import Event from "../models/Events.js";
 import { eventValidation } from "../validations/eventValidation.js";
 
 const addEvent = async (req, res) => {
-  console.log(req.body);
-
   const validateResult = eventValidation.validate(req.body);
   if (validateResult.error) {
     return res.status(400).json("Something went wrong");
@@ -21,17 +19,12 @@ const getEventById = async (req, res) => {
 };
 
 const getEvents = async (req, res) => {
-  //   const { _id: eventId } = req.event;
-  //   const { page = 1, limit = 20 } = req.query;
-  //   const skip = (page - 1) * limit;
-  //   const filter = { eventId };
+  console.log(req.query);
+  const { page = 1, limit = 8 } = req.query;
+  const skip = (Number(page) - 1) * Number(limit);
 
-  //   const result = await Event.find(filter, {
-  //     skip,
-  //     limit,
-  //   });
-
-  const result = await Event.find();
+  const result = await Event.find().limit(limit).skip(skip);
+  // const result = await Event.find();
   res.json(result);
 };
 
