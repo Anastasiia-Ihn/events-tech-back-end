@@ -19,12 +19,10 @@ const getEventById = async (req, res) => {
 };
 
 const getEvents = async (req, res) => {
-  console.log(req.query);
   const { page = 1, limit = 8 } = req.query;
   const skip = (Number(page) - 1) * Number(limit);
 
   const result = await Event.find().limit(limit).skip(skip);
-  // const result = await Event.find();
   res.json(result);
 };
 

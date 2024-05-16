@@ -1,7 +1,6 @@
 import User from "../models/User.js";
 
 import { userValidation } from "../validations/userValidation.js";
-import eventController from "./event-controller.js";
 
 const addUser = async (req, res) => {
   const { id } = req.params;
@@ -12,9 +11,9 @@ const addUser = async (req, res) => {
   }
 
   const { email } = req.body;
-  const isUser = await User.findOne({ email });
+  const isUser = await User.findOne({ email, eventId: id });
   if (isUser) {
-    return res.status(409).json("Email in use");
+    return res.status(409).json("Email in use in this event");
   }
 
   await User.create({ ...req.body, eventId: id });
@@ -24,10 +23,8 @@ const addUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   const { id: eventId } = req.params;
-  console.log(eventId);
 
   const allEvt = await User.find({ eventId });
-  console.log(allEvt);
   res.json(allEvt);
 };
 
