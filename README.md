@@ -22,4 +22,4 @@ To get started with this project, follow the installation instructions below.
    `git clone [https://github.com/Anastasiia-Ihn/events-tech-back-end.git]`
 2. Install the dependencies: `npm install`
 3. Start the development server: `npm start`
-4. The web server will be successfully connected on port: 3001.
+4. The web server will be successfully connected on port: 3000.
